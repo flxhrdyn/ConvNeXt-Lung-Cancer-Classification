@@ -37,6 +37,9 @@ with st.sidebar:
     page = st.radio("", ["🫁 Klasifikasi Citra", "📑 Performa Model", "🧬 Kanker Paru"], label_visibility="collapsed")
 
 # Halaman Klasifikasi Citra
+import time  # Pastikan sudah di-import di bagian atas
+
+# Halaman Klasifikasi Citra
 if "Klasifikasi" in page:
     st.title("🫁 Klasifikasi Citra Kanker Paru")
     st.markdown("📤 Unggah citra histopatologi untuk memprediksi jenis kanker paru.")
@@ -48,7 +51,11 @@ if "Klasifikasi" in page:
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0) / 255.0
 
+        # ⏱️ Hitung waktu inference
+        start_time = time.time()
         prediction = model_saved.predict(img_array)
+        inference_time = time.time() - start_time
+
         predicted_class = int(np.argmax(prediction, axis=1)[0])
         accuracy = float(np.max(prediction) * 100)
 
@@ -56,6 +63,7 @@ if "Klasifikasi" in page:
         st.session_state["uploaded_image"] = uploaded_file
         st.session_state["predicted_class"] = predicted_class
         st.session_state["accuracy"] = accuracy
+        st.session_state["inference_time"] = inference_time
 
     # Tampilkan hasil jika sudah ada di session_state
     if "predicted_class" in st.session_state and "uploaded_image" in st.session_state:
@@ -75,9 +83,10 @@ if "Klasifikasi" in page:
                     unsafe_allow_html=True
                 )
                 st.markdown(f"### Akurasi: `{st.session_state['accuracy']:.2f}%`")
+                st.markdown(f"### Waktu Inference: `{st.session_state['inference_time']:.4f} detik`")
                 st.success("✅ Prediksi Selesai!")
 
-    # Tampilkan waktu memuat model
+    # Tampilkan waktu memuat model (satu kali)
     if "model_loaded" not in st.session_state:
         st.session_state.model_loaded = True
         st.success(f"Model berhasil dimuat dalam {elapsed:.2f} detik.")
