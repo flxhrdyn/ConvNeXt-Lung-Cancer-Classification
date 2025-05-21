@@ -84,7 +84,7 @@ if "Klasifikasi" in page:
                 )
                 st.markdown(f"### Akurasi: `{st.session_state['accuracy']:.2f}%`")
                 st.markdown(f"### Waktu Inference: `{st.session_state['inference_time']:.4f} detik`")
-                st.success(f"✅ Prediksi Selesai!)
+                st.success("✅ Prediksi Selesai!")
 
     # Tampilkan waktu memuat model (satu kali)
     if "model_loaded" not in st.session_state:
