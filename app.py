@@ -48,7 +48,7 @@ if "Klasifikasi" in page:
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0) / 255.0
 
-        prediction = model.predict(img_array)
+        prediction = model_saved.predict(img_array)
         predicted_class = int(np.argmax(prediction, axis=1)[0])
         accuracy = float(np.max(prediction) * 100)
 
