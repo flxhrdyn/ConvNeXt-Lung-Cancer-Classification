@@ -135,8 +135,8 @@ elif "Model" in page:
 
     with st.expander("📊 Confusion Matrix"):
         st.markdown("""
-        Model ini terkadang mengalami kesalahan klasifikasi antara citra histopatologi **Adenokarsinoma Paru** (`adenocarcinoma`) dengan **Karsinoma Sel Skuamosa Paru** (`squamous_cell_carcinoma`) 
-        karena kemiripan visualnya. Namun, citra histopatologi Jaringan Paru Jinak (`benign`) dapat diklasifikasikan dengan baik.
+        Model ini mengalami beberapa kesalahan klasifikasi antara citra histopatologi **Adenokarsinoma Paru** (`adenocarcinoma`) dengan **Karsinoma Sel Skuamosa Paru** (`squamous_cell_carcinoma`) 
+        karena kemiripan visualnya. Namun, citra histopatologi **Jaringan Paru Jinak** (`benign`) dapat diklasifikasikan dengan baik.
         """)
         st.image("assets/model_performace_82split/conf_matrix_82.png", caption="Evaluasi Confusion Matrix", width=700)
     
