@@ -68,7 +68,7 @@ if "Klasifikasi" in page:
     # Tampilkan hasil jika sudah ada di session_state
     if "predicted_class" in st.session_state and "uploaded_image" in st.session_state:
         img = image.load_img(st.session_state["uploaded_image"], target_size=(224, 224))
-        class_labels = ['Adenokarsinoma', 'Jinak', 'Karsinoma Sel Skuamosa']
+        class_labels = ['Adenokarsinoma Paru', 'Jaringan Paru Jinak', 'Karsinoma Sel Skuamosa Paru']
         colors = ["#f7dc6f", "#2ecc71", "#f7dc6f"]
 
         with st.container():
@@ -94,15 +94,15 @@ if "Klasifikasi" in page:
 # Halaman Performa Model
 elif "Model" in page:
     st.title("📑 Performa Model ConvNeXt")
-    st.markdown("""Model ini menggunakan arsitektur **ConvNeXt**, dilatih pada 3000 citra histopatologi kanker paru-paru. 
+    st.markdown("""Model yang digunakan adalah model **ConvNeXt-Base** yang dilatih pada dataset yang berisi 3000 citra histopatologi kanker paru-paru. 
                 Dataset ini kemudian dibagi dengan rasio 80:10:10, menjadi 2400 citra data latih, 300 citra data validasi, 
                 dan 300 citra data uji.""")
 
     with st.expander("📌 Arsitektur Model"):
         st.markdown("""
         ConvNeXt merupakan arsitektur modern berbasis Convolutional Neural Network (CNN) yang mengadopsi prinsip desain dari Vision Transformer (ViT).
-        Pada penelitian ini, model `ConvNeXt_Base` dimodifikasi dengan penambahan lapisan fully connected dan metode transfer learning untuk meningkatkan 
-        performa klasifikasi citra histopatologis.
+        Pada penelitian ini, model `ConvNeXt_Base` dimodifikasi dengan penambahan lapisan fully connected dan fine-tuning dengan metode transfer learning 
+        untuk meningkatkan performa model untuk klasifikasi citra histopatologis kanker paru.
         """)
         st.image("assets/model_performace_82split/model_sum_82.png", caption="Arsitektur Model ConvNeXt Final", width=700)
 
@@ -111,8 +111,8 @@ elif "Model" in page:
         # Perfroma Sementara!!!!!!
         st.subheader("🎯 Akurasi Model")
         st.markdown("""
-                    Berikut ini adalah akurasi tertinggi yang dicapai oleh Model ConvNeXt setelah 60 epoch pelatihan dan validasi, 
-                    serta pengujian dengan menggunakan test set.
+                    Model dilatih sebanyak 55 `epoch` dengan `batch size` sebesar 32. Pelatihan dilakukan dengan menggunakan optimizer `AdamW` dan loss function `categorical cross entropy`. Berikut ini adalah akurasi tertinggi yang dicapai oleh Model ConvNeXt setelah proses pelatihan dan validasi, 
+                    serta pengujian dengan menggunakan data uji.
                     """)
         
         col1, col2, col3 = st.columns(3)
@@ -135,14 +135,14 @@ elif "Model" in page:
 
     with st.expander("📊 Confusion Matrix"):
         st.markdown("""
-        Model ini terkadang mengalami kesalahan klasifikasi antara **adenokarsinoma** (`adenocarcinoma`) dengan **karsinoma sel skuamosa** (`squamous_cell_carcinoma`) 
-        karena kemiripan visualnya. Namun, jaringan paru jinak (`benign`) sebagian besar dapat diklasifikasikan dengan baik.
+        Model ini terkadang mengalami kesalahan klasifikasi antara citra histopatologi **Adenokarsinoma Paru** (`adenocarcinoma`) dengan **Karsinoma Sel Skuamosa Paru** (`squamous_cell_carcinoma`) 
+        karena kemiripan visualnya. Namun, citra histopatologi Jaringan Paru Jinak (`benign`) dapat diklasifikasikan dengan baik.
         """)
         st.image("assets/model_performace_82split/conf_matrix_82.png", caption="Evaluasi Confusion Matrix", width=700)
     
     with st.expander("🔮 Prediksi Test Set"):
         st.markdown("""
-        Model ini diuji dengan menggunakan 300 citra histpatologi dari test set. 
+        Model ini diuji dengan menggunakan 300 citra histpatologi dari data uji. 
         Berikut ini adalah sampel hasil prediksi citra pada tahap evaluasi model.
         """)
         st.image("assets/model_performace_82split/test_predict_82.png", caption="Hasil Prediksi Test Set", width=700)
