@@ -140,7 +140,7 @@ elif "Model" in page:
         """)
         st.image("assets/model_performace_82split/conf_matrix_82.png", caption="Evaluasi Confusion Matrix", width=700)
     
-    with st.expander("🔮 Prediksi Test Set"):
+    with st.expander("🔮 Prediksi Data Uji"):
         st.markdown("""
         Model ini diuji dengan menggunakan 300 citra histpatologi dari data uji. 
         Berikut ini adalah sampel hasil prediksi citra pada tahap evaluasi model.
