@@ -37,9 +37,6 @@ with st.sidebar:
     page = st.radio("", ["🫁 Klasifikasi Citra", "📑 Performa Model", "🧬 Kanker Paru"], label_visibility="collapsed")
 
 # Halaman Klasifikasi Citra
-import time  # Pastikan sudah di-import di bagian atas
-
-# Halaman Klasifikasi Citra
 if "Klasifikasi" in page:
     st.title("🫁 Klasifikasi Citra Kanker Paru")
     st.markdown("📤 Unggah citra histopatologi untuk memprediksi jenis kanker paru.")
@@ -86,7 +83,7 @@ if "Klasifikasi" in page:
                 st.markdown(f"### Waktu Inference: `{st.session_state['inference_time']:.4f} detik`")
                 st.success("✅ Prediksi Selesai!")
 
-    # Tampilkan waktu memuat model (satu kali)
+    # Tampilkan waktu memuat model
     if "model_loaded" not in st.session_state:
         st.session_state.model_loaded = True
         st.success(f"Model berhasil dimuat dalam {elapsed:.2f} detik.")
@@ -108,7 +105,7 @@ elif "Model" in page:
 
     with st.expander("📈 Performa Model"):
 
-        # Perfroma Sementara!!!!!!
+        # Perfroma Sementara!!!
         st.subheader("🎯 Akurasi Model")
         st.markdown("""
                     Model dilatih sebanyak 55 `epoch` dengan `batch size` sebesar 32. Pelatihan dilakukan dengan menggunakan optimizer `AdamW` dan loss function `categorical cross entropy`. Berikut ini adalah akurasi tertinggi yang dicapai oleh Model ConvNeXt setelah proses pelatihan dan validasi, 
@@ -203,6 +200,6 @@ elif "Kanker" in page:
                     molecular characteristics and differential diagnosis. Histopathology, 84(1), pp.32-49.</br>
                     </div>""", unsafe_allow_html=True)
 
-# Footer Opsional
+# Footer
 st.markdown("---")
 st.markdown("<center>© 2025 Klasifikasi Kanker Paru | Felix Hardyan</center>", unsafe_allow_html=True)
