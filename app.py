@@ -181,7 +181,7 @@ elif "Kanker" in page:
             st.image("assets/lusc.jpg", caption="Citra Histopatologi LUSC", width=300)
 
         # Benign
-        st.subheader("3. **Jaringan Paru Jinal (Benign Lung Tissue)**")
+        st.subheader("3. **Jaringan Paru Jinak (Benign Lung Tissue)**")
         st.markdown("""<div style='text-align: justify'>
                     Meskipun kanker paru seperti adenokarsinoma paru dan karsinoma sel skuamosa paru merupakan salah satu keganasan yang paling umum ditemui oleh ahli patologi, 
                     penting bagi ahli patologi untuk memahami ciri-ciri diagnostik jaringan paru jinak (benign lung tissue) agar tidak keliru mengenalinya sebagai kanker paru yang secara morfologis serupa.
