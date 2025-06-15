@@ -113,9 +113,9 @@ elif "Model" in page:
                     """)
         
         col1, col2, col3 = st.columns(3)
-        col1.metric("**Akurasi Latih**", "96.67%", "+96.67%")
-        col2.metric("**Akurasi Validasi**", "96.67%", "+0%")
-        col3.metric("**Akurasi Uji**", "93.67%", "-3%")
+        col1.metric("**Akurasi Latih**", "95.13%", "+95.13%")
+        col2.metric("**Akurasi Validasi**", "96.67%", "+1.54%")
+        col3.metric("**Akurasi Uji**", "93.67%", "-3.00%")
 
         st.image("assets/model_performace_82split/train_acc_loss_82.png", caption="Plot Akurasi dan Loss pada Pelatihan dan Validasi", width=700)
 
