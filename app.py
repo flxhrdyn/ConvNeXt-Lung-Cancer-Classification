@@ -109,12 +109,12 @@ elif "Model" in page:
         st.subheader("🎯 Akurasi Model")
         st.markdown("""
                     Model dilatih sebanyak 55 `epoch` dengan `batch size` sebesar 32. Pelatihan dilakukan dengan menggunakan optimizer `AdamW` dan loss function `categorical cross entropy`. Berikut ini adalah akurasi tertinggi yang dicapai oleh Model ConvNeXt setelah proses pelatihan dan validasi, 
-                    serta pengujian dengan menggunakan data uji.
+                    serta pengujian dan evaluasi dengan menggunakan data uji.
                     """)
         
         col1, col2, col3 = st.columns(3)
-        col1.metric("**Akurasi Latih**", "95.13%", "+95.13%")
-        col2.metric("**Akurasi Validasi**", "96.67%", "+1.54%")
+        col1.metric("**Akurasi Latih**", "96.08%", "+96.08%")
+        col2.metric("**Akurasi Validasi**", "96.67%", "+0.59%")
         col3.metric("**Akurasi Uji**", "93.67%", "-3.00%")
 
         st.image("assets/model_performace_82split/train_acc_loss_82.png", caption="Plot Akurasi dan Loss pada Pelatihan dan Validasi", width=700)
